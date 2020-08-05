@@ -1,8 +1,8 @@
 <template>
-  <div id="burger">
+  <div id="burger" :class="{ 'active' : isBurgerActive }">
     <button class='burger-button'
       v-on:click="toggle">
-        <i class="material-icons">menu</i>
+        <i class="material-icons">chevron_right</i>
       </button>
   </div>
 </template>
@@ -28,10 +28,25 @@ export default {
   .burger-button {
     position: relative;
     display: block;
-    z-index: 999;
+    background: transparent;
+    border: none !important;
+    outline: none;
   }
+
   #burger {
     position: absolute;
-    top: 0.7%;
+    top: 50%;
+    transition: all 150ms ease-in 0s;
+    z-index: 999;
   }
+
+  #burger.active {
+    transform: translateX(340px);
+    z-index: 999;
+  }
+
+  .material-icons {
+    font-size: 50px;
+  }
+
 </style>

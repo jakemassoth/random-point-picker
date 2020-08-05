@@ -25,11 +25,28 @@ export default {
       return store.isNavOpen;
     },
   },
-
 };
 
 </script>
 <style>
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0.8rem;
+}
+
+input {
+  margin-bottom: 5%;
+}
+
+label {
+  padding-right: 5%
+}
+
+.sidebar {
+  color: #CDCDCD;
+}
+
 .slide-enter-active,
 .slide-leave-active {
   transition: transform 0.2s ease;
