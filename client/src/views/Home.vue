@@ -1,16 +1,14 @@
 <template>
   <div>
     <Sidebar>
-      <form>
-        <input type="text" placeholder="enter a location" id="baseLocation">
         <label for="baseLocation">Starting Point</label>
-        <input type="text" placeholder="enter a location" id="baseLocation">
-        <label for="baseLocation">Starting Point</label>
-      </form>
-    </Sidebar>
-
+        <input type="text" placeholder="enter a location" v-model="baseLocation">
+        <label for="radius">Radius</label>
+        <input type="text" placeholder="enter a radius" v-model="radius">
+        <input type="submit" value="Submit" v-on:click="optionsSubmit">
+      </Sidebar>
     <Burger/>
-    <Map/>
+    <Map :centerLocation="coords" :radiusSize="radiusSizeInKm"/>
   </div>
 </template>
 
@@ -27,36 +25,22 @@ export default {
     Burger,
     Sidebar,
   },
+  data() {
+    return {
+      coords: [4.8945, 52.367],
+      radiusSizeInKm: 4,
+    };
+  },
+  methods: {
+    optionsSubmit() {
+      const coordsArr = this.baseLocation.split(',').map(Number);
+      this.coords = coordsArr;
+      this.radiusSizeInKm = this.radius;
+    },
+  },
 };
 </script>
 
 <style>
-html {
-   height: 100%;
-   overflow:hidden;
- }
-
- body {
-   border: 0; margin: 0; padding: 0;
-   font-family: 'Lato';
-   height: 100%;
- }
-
- .logo {
-   align-self: center;
-   color: #fff;
-   font-weight: bold;
-   font-family: 'Lato'
- }
-
- .main-nav {
-   display: flex;
-   justify-content: space-between;
-   padding: 0.5rem 0.8rem;
- }
-
- input {
-   margin-bottom: 5%;
- }
 
 </style>
