@@ -13,7 +13,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Map from '@/components/Map.vue';
 import Burger from '@/components/menu/Burger.vue';
 import Sidebar from '@/components/menu/Sidebar.vue';
@@ -33,7 +32,7 @@ export default {
   },
   methods: {
     optionsSubmit() {
-      const coordsArr = this.baseLocation.split(',').map(Number);
+      const coordsArr = this.baseLocation.split(',').map(Number).reverse();
       this.coords = coordsArr;
       this.radiusSizeInKm = this.radius;
     },
